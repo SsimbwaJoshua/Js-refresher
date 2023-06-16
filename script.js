@@ -63,3 +63,34 @@
 
 // JSON.stringify to convert objects into JSON.
 // JSON.parse to convert JSON back into an object
+
+//////////////////////////
+//TRY CATCH
+//////////////////////////
+
+// let json = '{"name":"John", "age": 30}';
+// const working = JSON.parse(json);
+// console.log(working.name);
+// try {
+//   alert(`hei ${working.names}`);
+// } catch (err) {
+//   alert(err.message);
+// }
+
+// let json = '{"name":"John", "age": 30}';
+// const working = JSON.parse(json);
+// console.log(working.name);
+// try {
+//   alert(`hei ${working.names}`);
+// } catch (err) {
+//   console.log(err.message);
+//}
+
+let json = '{"name":"John", "age": 30}';
+const working = JSON.parse(json);
+console.log(working.name);
+try {
+  console.log(`hei ${working.names}`);
+} catch (err) {
+  console.log(err.message);
+}
