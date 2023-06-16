@@ -90,7 +90,10 @@ let json = '{"name":"John", "age": 30}';
 const working = JSON.parse(json);
 console.log(working.name);
 try {
+  if (!working.names) {
+    throw new Error("names isnt there");
+  }
   console.log(`hei ${working.names}`);
 } catch (err) {
-  console.log(err.message);
+  alert(err.message);
 }
