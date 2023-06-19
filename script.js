@@ -86,14 +86,109 @@
 //   console.log(err.message);
 //}
 
-let json = '{"name":"John", "age": 30}';
-const working = JSON.parse(json);
-console.log(working.name);
-try {
-  if (!working.names) {
-    throw new Error("names isnt there");
-  }
-  console.log(`hei ${working.names}`);
-} catch (err) {
-  alert(err.message);
+// let json = '{"name":"John", "age": 30}';
+// const working = JSON.parse(json);
+// console.log(working.name);
+// try {
+//   if (!working.names) {
+//     throw new Error("names isnt there");
+//   }
+//   console.log(`hei ${working.names}`);
+// } catch (err) {
+//   alert(err.message);
+// }
+
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////// CHALLENGE 0NE //////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+// Define the properties array
+let properties = [];
+
+let propertiesBackups = [];
+
+// Define a property object
+let property = {
+  propertyID: "p001",
+  location: "Makindye",
+  size: 700,
+  price: 20000,
+  status: "sale",
+  ownerContactInfo: {
+    name: "joshua",
+    phoneNumber: "087665544445",
+    email: "helo@gmail.com",
+  },
+  listedDate: new Date(),
+};
+let secondProperty = {
+  propertyID: "p002",
+  location: "kampala",
+  size: 200,
+  price: 1000,
+  status: "sale",
+  ownerContactInfo: {
+    name: "ssimbwa",
+    phoneNumber: "0775555555",
+    email: "yes@hfh.com",
+  },
+  listedDate: new Date(),
+};
+
+// Function to clone a property
+function cloneProperty(objectProperty) {
+  const propClone = Object(objectProperty);
+
+  propertiesBackups.push(propClone);
 }
+
+// Function to freeze a property
+function freezeProperty(property) {
+  if (property.status == hired) {
+    Object.freeze(property);
+    Object.freeze(property.ownerContactInfo);
+  }
+}
+
+// Function to add a new property
+function addProperty(newproperty) {
+  properties.push(newproperty);
+}
+
+// Function to update a property
+function updateProperty(testID, newDetails) {
+  const wantedObject = properties.find((obj) => {
+    if (obj.propertyID == testID) {
+      return obj;
+    }
+  });
+
+  //new details
+  newDetails = wantedObject.price = 1000;
+
+  console.log(wantedObject);
+}
+
+// Function to sort properties
+function sortProperties(sortFunction) {
+  // TODO: Implement this function
+}
+
+// Function to calculate the number of days a property has been listed
+function daysListed(property) {
+  // TODO: Implement this function
+}
+
+/////////////////////////////////////////////////// implementation//////////////
+
+cloneProperty(property);
+console.log(propertiesBackups);
+
+////////////
+
+addProperty(property);
+addProperty(secondProperty);
+console.log(properties);
+
+/////////////////
+updateProperty("p001");
