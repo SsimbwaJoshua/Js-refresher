@@ -162,11 +162,27 @@ function updateProperty(testID, newDetails) {
       return obj;
     }
   });
+  // console.log(wantedObject);
+  console.log("properties");
+
+  console.log(properties);
+  //deleting the current object
+  const filteredArray = properties.filter((obj) => {
+    console.log("filter iterations");
+    return obj.propertyID !== testID;
+  });
+  console.log("filterd string");
+  console.log(filteredArray);
 
   //new details
-  newDetails = wantedObject.price = 1000;
+  newDetails = wantedObject.price = 10000;
 
-  console.log(wantedObject);
+  //adding wanted updated object
+  const addWantedUpdate = filteredArray.push(wantedObject);
+  properties = filteredArray;
+
+  console.log(properties);
+  return properties;
 }
 
 // Function to sort properties
@@ -182,13 +198,13 @@ function daysListed(property) {
 /////////////////////////////////////////////////// implementation//////////////
 
 cloneProperty(property);
-console.log(propertiesBackups);
+// console.log(propertiesBackups);
 
 ////////////
 
 addProperty(property);
 addProperty(secondProperty);
-console.log(properties);
+// console.log(properties);
 
 /////////////////
 updateProperty("p001");
