@@ -109,18 +109,19 @@ let propertiesBackups = [];
 
 /////////////////////////////
 const dateListed = new Date().toString();
-console.log(dateListed);
-const currentDate = new Date();
+// console.log(dateListed);
+// const currentDate = new Date();
 
 // Function to calculate the number of days a property has been listed
 function daysListed(objec) {
-  const date1 = objec.listedDate;
+  const date1 = +objec.listedDate;
   const date2 = new Date();
   const calcDays = (date1, date2) => {
-    numDays = (Math.abs(date1 - date2) / 1000) * 60 * 60 * 24;
+    numDays = Math.floor((Math.abs(date1 - date2) / 1000) * 60 * 60 * 24);
     if (numDays < 1) return "Today";
     if (numDays > 1) return `${numDays} Days`;
   };
+
   return calcDays(date1, date2);
 }
 
@@ -136,8 +137,8 @@ let property = {
     phoneNumber: "087665544445",
     email: "helo@gmail.com",
   },
-  daysPassed: daysListed(property),
-  listedDate: dateListed,
+  daysPassed: daysListed,
+  listedDate: "2019-06-02",
 };
 
 let secondProperty = {
@@ -151,8 +152,8 @@ let secondProperty = {
     phoneNumber: "0775555555",
     email: "yes@hfh.com",
   },
-  listedDate: dateListed,
-  daysPassed: daysListed(secondProperty),
+  listedDate: "2019-06-02",
+  daysPassed: daysListed,
 };
 
 // Function to clone a property
@@ -183,16 +184,14 @@ function updateProperty(testID, newDetails) {
     }
   });
   // console.log(wantedObject);
-  console.log("properties");
-
-  console.log(properties);
+  // console.log("properties");
+  // console.log(properties);
   //deleting the current object
   const filteredArray = properties.filter((obj) => {
-    console.log("filter iterations");
     return obj.propertyID !== testID;
   });
-  console.log("filterd string");
-  console.log(filteredArray);
+  // console.log("filterd string");
+  // console.log(filteredArray);
 
   //new details
   newDetails = wantedObject.price = 10000;
@@ -201,7 +200,7 @@ function updateProperty(testID, newDetails) {
   const addWantedUpdate = filteredArray.push(wantedObject);
   properties = filteredArray;
 
-  console.log(properties);
+  // console.log(properties);
   return properties;
 }
 
@@ -212,16 +211,16 @@ const sortLocation = (namedSort) => {
     return obj.location == namedSort;
   });
 
-  console.log("wanted location");
-  console.log(wantedLocation);
+  // console.log("wanted location");
+  // console.log(wantedLocation);
 };
 
 const sortStatus = (namedSort) => {
   const wantedStatus = properties.filter((obj) => {
     return obj.status == namedSort;
   });
-  console.log("wanted status");
-  console.log(wantedStatus);
+  // console.log("wanted status");
+  // console.log(wantedStatus);
 };
 ////main sort
 function sortProperties(namedSort) {
@@ -234,7 +233,8 @@ const alternativeSort = (namedSort) => {
   for (const obj of properties) {
     for (const key in obj) {
       if (obj.hasOwnProperty(key) && obj[key] === namedSort) {
-        return console.log(obj);
+        // console.log(obj)
+        return obj;
       }
     }
   }
@@ -260,3 +260,41 @@ sortProperties("Makindye");
 
 /////////////////
 alternativeSort("Makindye");
+
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////// CHALLENGE  Two////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+// Define the alarms array
+let alarms = [];
+
+// Define an alarm object
+let alarm = {
+  alarmID: "",
+  time: "",
+  message: "",
+  days: [],
+  snoozeDuration: 0,
+  ring() {
+    // TODO: Implement this function
+  },
+};
+
+// Function to add new alarms
+function setAlarm(...newAlarms) {
+  // TODO: Implement this function
+}
+
+// Function to find an alarm by its ID
+function findAlarm(alarmID) {
+  // TODO: Implement this function
+}
+
+// Function to remember snoozed alarms
+function rememberSnoozed() {
+  // TODO: Implement this function
+}
+
+// Function to create an iterable for the alarms array
+function createIterable() {
+  // TODO: Implement this function
+}
