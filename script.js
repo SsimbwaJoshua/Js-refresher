@@ -107,6 +107,23 @@ let properties = [];
 
 let propertiesBackups = [];
 
+/////////////////////////////
+const dateListed = new Date().toString();
+console.log(dateListed);
+const currentDate = new Date();
+
+// Function to calculate the number of days a property has been listed
+function daysListed(objec) {
+  const date1 = objec.listedDate;
+  const date2 = new Date();
+  const calcDays = (date1, date2) => {
+    numDays = (Math.abs(date1 - date2) / 1000) * 60 * 60 * 24;
+    if (numDays < 1) return "Today";
+    if (numDays > 1) return `${numDays} Days`;
+  };
+  return calcDays(date1, date2);
+}
+
 // Define a property object
 let property = {
   propertyID: "p001",
@@ -119,8 +136,10 @@ let property = {
     phoneNumber: "087665544445",
     email: "helo@gmail.com",
   },
-  listedDate: new Date(),
+  daysPassed: daysListed(property),
+  listedDate: dateListed,
 };
+
 let secondProperty = {
   propertyID: "p002",
   location: "kampala",
@@ -132,7 +151,8 @@ let secondProperty = {
     phoneNumber: "0775555555",
     email: "yes@hfh.com",
   },
-  listedDate: new Date(),
+  listedDate: dateListed,
+  daysPassed: daysListed(secondProperty),
 };
 
 // Function to clone a property
@@ -209,23 +229,17 @@ function sortProperties(namedSort) {
   sortStatus(namedSort);
 }
 
-//other alternative to sort
-// const alternativeSort = (namedSort) => {
-//   const objects=properties.map((obj) => {
-//     return obj
-
-//   });
-//   for ([Key, value] of obj) {
-//     if (value == namedSort) {
-//       return console.log(obj);
-//     }
-//   }
-// };
-
-// Function to calculate the number of days a property has been listed
-function daysListed(property) {
-  // TODO: Implement this function
-}
+// other alternative to sort
+const alternativeSort = (namedSort) => {
+  for (const obj of properties) {
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key) && obj[key] === namedSort) {
+        return console.log(obj);
+      }
+    }
+  }
+  return null;
+};
 
 /////////////////////////////////////////////////// implementation//////////////
 
@@ -245,4 +259,4 @@ updateProperty("p001");
 sortProperties("Makindye");
 
 /////////////////
-// alternativeSort("Makindye");
+alternativeSort("Makindye");
