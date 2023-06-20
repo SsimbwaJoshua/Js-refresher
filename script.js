@@ -186,9 +186,41 @@ function updateProperty(testID, newDetails) {
 }
 
 // Function to sort properties
-function sortProperties(sortFunction) {
-  // TODO: Implement this function
+
+const sortLocation = (namedSort) => {
+  const wantedLocation = properties.filter((obj) => {
+    return obj.location == namedSort;
+  });
+
+  console.log("wanted location");
+  console.log(wantedLocation);
+};
+
+const sortStatus = (namedSort) => {
+  const wantedStatus = properties.filter((obj) => {
+    return obj.status == namedSort;
+  });
+  console.log("wanted status");
+  console.log(wantedStatus);
+};
+////main sort
+function sortProperties(namedSort) {
+  sortLocation(namedSort);
+  sortStatus(namedSort);
 }
+
+//other alternative to sort
+// const alternativeSort = (namedSort) => {
+//   const objects=properties.map((obj) => {
+//     return obj
+
+//   });
+//   for ([Key, value] of obj) {
+//     if (value == namedSort) {
+//       return console.log(obj);
+//     }
+//   }
+// };
 
 // Function to calculate the number of days a property has been listed
 function daysListed(property) {
@@ -208,3 +240,9 @@ addProperty(secondProperty);
 
 /////////////////
 updateProperty("p001");
+
+////////////////
+sortProperties("Makindye");
+
+/////////////////
+// alternativeSort("Makindye");
