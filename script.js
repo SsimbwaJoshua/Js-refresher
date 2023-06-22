@@ -273,7 +273,7 @@ const timeplace = document.querySelector(".time");
 ////alarm ring with matching time/////
 ////////////////////////////////
 
-// const timeRightNow = new Date();
+const timeRightNow = new Date();
 // const hourRightNow = timeRightNow.getHours();
 // const minsRightNow = String(timeRightNow.getMinutes()).padStart(2, 0);
 // const alarmhappeningTime = String(`${hourRightNow}:${minsRightNow}`);
@@ -323,7 +323,18 @@ function setAlarm(tym, day, snoze) {
   const newAlarm = { ...alarm };
 
   newAlarm.alarmID = `alarm${alarms.length + 1}`;
-  newAlarm.time = tym;
+  //calculate the time difference
+
+  const [hours, minutes] = tym.split(":");
+
+  const time1 = new Date();
+  time1.setHours(hours);
+  time1.setMinutes(minutes);
+
+  const timeDifferenceInseconds = Math.abs(+timeRightNow - +time1) / 1000;
+  newAlarm.time = timeDifferenceInseconds;
+  console.log(timeDifferenceInseconds);
+
   // newAlarm.message = messag;
   newAlarm.days = [day];
   newAlarm.snoozeDuration = snoze;
@@ -359,7 +370,7 @@ function createIterable() {
 
 //adding alarm
 // setAlarm(60, 1, 1);
-setAlarm(60, "number2", 2, 2);
+setAlarm("22:33", "number2", 2, 2);
 console.log("alrms array");
 console.log(alarms);
 
