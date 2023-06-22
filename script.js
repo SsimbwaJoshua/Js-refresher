@@ -267,29 +267,69 @@ alternativeSort("Makindye");
 // Define the alarms array
 let alarms = [];
 
+const timeplace = document.querySelector(".time");
+
+///////////////////////////////
+////alarm ring with matching time/////
+////////////////////////////////
+
+// const timeRightNow = new Date();
+// const hourRightNow = timeRightNow.getHours();
+// const minsRightNow = String(timeRightNow.getMinutes()).padStart(2, 0);
+// const alarmhappeningTime = String(`${hourRightNow}:${minsRightNow}`);
+// console.log(alarmhappeningTime);
+
+// let time = 10;
+let setAlarmTime = "";
 // Define an alarm object
 let alarm = {
   alarmID: "",
   time: "",
-  message: "",
+  message: "alarm set",
   days: [],
   snoozeDuration: 0,
-  ring() {
-    // TODO: Implement this function
+  ring: function () {
+    /////////////////////////////////
+    // FIRST IMPLEMENTATION
+    /////////////////////////////////////
+    // if (this.time == alarmhappeningTime) {
+    //   console.log("alaerm goes off");
+    // } else {
+    //   console.log("didnt match");
+    // }
+
+    const countDown = setInterval(() => {
+      let minutes = String(Math.trunc(this.time / 60)).padStart(2, 0);
+      let seconds = String(this.time % 60).padStart(2, 0);
+      timeplace.textContent = `${minutes}:${seconds}`;
+      this.time = this.time - 1;
+
+      if (this.time === 0) {
+        clearInterval(countDown);
+        // alert("ringing");
+        timeplace.textContent = `ringing ringing ringing ringing`;
+      }
+      if (this.time < 0) {
+        clearInterval(countDown);
+      }
+    }, 1000);
+    return countDown;
   },
 };
+alarm.ring();
 
 // Function to add new alarms
-function setAlarm(tym, messag, day, snoze) {
+function setAlarm(tym, day, snoze) {
   const newAlarm = { ...alarm };
 
   newAlarm.alarmID = `alarm${alarms.length + 1}`;
   newAlarm.time = tym;
-  newAlarm.message = messag;
+  // newAlarm.message = messag;
   newAlarm.days = [day];
   newAlarm.snoozeDuration = snoze;
 
   alarms.push(newAlarm);
+  newAlarm.ring();
 }
 
 // Function to find an alarm by its ID
@@ -318,25 +358,13 @@ function createIterable() {
 /////////////////////Implementation///////////////////////////////////
 
 //adding alarm
-setAlarm(1, "number1", 1, 1);
-setAlarm(2, "number2", 2, 2);
+// setAlarm(60, 1, 1);
+setAlarm(60, "number2", 2, 2);
 console.log("alrms array");
 console.log(alarms);
 
-//finding alarm
-findAlarm("alarm1");
+// //finding alarm
+// findAlarm("alarm1");
 
 /////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-const timeplace = document.querySelector(".time");
-
-let time = 100;
-// timeplace.textContent = `${time}`;
-
-// reducing time by i second
-setInterval(() => {
-  let minutes = String(Math.trunc(time / 60)).padStart(2, 0);
-  let seconds = String(time % 60).padStart(2, 0);
-  timeplace.textContent = `${minutes}:${seconds}`;
-  time = time - 1;
-}, 1000);
