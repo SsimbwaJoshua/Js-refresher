@@ -280,8 +280,14 @@ let alarm = {
 };
 
 // Function to add new alarms
-function setAlarm(...newAlarms) {
-  // TODO: Implement this function
+function setAlarm(alarm) {
+  const newAlarm = (tym, messag, day, snoze) => {
+    alarm.alarmID = `alarm${alarms.length}`;
+    alarm.time = tym;
+    alarm.message = messag;
+    alarm.days = [day];
+    alarm.snoozeDuration = snoze;
+  };
 }
 
 // Function to find an alarm by its ID
