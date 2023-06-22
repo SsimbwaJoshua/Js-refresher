@@ -325,3 +325,18 @@ console.log(alarms);
 
 //finding alarm
 findAlarm("alarm1");
+
+/////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+const timeplace = document.querySelector(".time");
+
+let time = 100;
+// timeplace.textContent = `${time}`;
+
+// reducing time by i second
+setInterval(() => {
+  let minutes = String(Math.trunc(time / 60)).padStart(2, 0);
+  let seconds = String(time % 60).padStart(2, 0);
+  timeplace.textContent = `${minutes}:${seconds}`;
+  time = time - 1;
+}, 1000);
