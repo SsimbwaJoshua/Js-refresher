@@ -280,19 +280,28 @@ let alarm = {
 };
 
 // Function to add new alarms
-function setAlarm(alarm) {
-  const newAlarm = (tym, messag, day, snoze) => {
-    alarm.alarmID = `alarm${alarms.length}`;
-    alarm.time = tym;
-    alarm.message = messag;
-    alarm.days = [day];
-    alarm.snoozeDuration = snoze;
-  };
+function setAlarm(tym, messag, day, snoze) {
+  const newAlarm = { ...alarm };
+
+  newAlarm.alarmID = `alarm${alarms.length + 1}`;
+  newAlarm.time = tym;
+  newAlarm.message = messag;
+  newAlarm.days = [day];
+  newAlarm.snoozeDuration = snoze;
+
+  alarms.push(newAlarm);
 }
 
 // Function to find an alarm by its ID
-function findAlarm(alarmID) {
-  // TODO: Implement this function
+function findAlarm(ID) {
+  const wantedObj = alarms.find((obj) => {
+    if (obj.alarmID === ID) {
+      return obj;
+    } else return;
+  });
+  console.log("wanted alarm");
+  console.log(wantedObj);
+  return wantedObj;
 }
 
 // Function to remember snoozed alarms
@@ -304,3 +313,15 @@ function rememberSnoozed() {
 function createIterable() {
   // TODO: Implement this function
 }
+
+////////////////////////////////////////////////////////////////////////////
+/////////////////////Implementation///////////////////////////////////
+
+//adding alarm
+setAlarm(1, "number1", 1, 1);
+setAlarm(2, "number2", 2, 2);
+console.log("alrms array");
+console.log(alarms);
+
+//finding alarm
+findAlarm("alarm1");
