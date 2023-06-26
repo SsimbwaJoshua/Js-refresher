@@ -1,0 +1,46 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  text-align: center;
+  display: grid;
+  justify-content: center;
+}
+
+.snooze-popup {
+  /* display: none !important; */
+  margin-top: 3rem;
+  width: 20rem;
+  height: 20rem;
+
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px #ccc;
+  background-color: #ccc;
+  display: grid;
+  align-items: center;
+}
+
+.btns {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  padding: 0.5rem 2rem;
+  font-size: 2rem;
+
+  background-color: aqua;
+  border: none;
+  border-radius: 10px;
+}
+
+.btn:hover {
+  background-color: red;
+}
+
+.hidden {
+  display: none;
+}
