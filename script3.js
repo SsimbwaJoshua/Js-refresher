@@ -8,7 +8,14 @@ let player = {
 
 // Function to roll two dice
 function rollDice() {
-  // TODO: Implement this function
+  //rolling dice
+  const dice1 = Math.floor(Math.random() * 6 + 1);
+
+  const dice2 = Math.floor(Math.random() * 6 + 1);
+
+  const randomNumber = dice1 + dice2;
+  console.log(randomNumber);
+  return randomNumber;
 }
 
 // Function to narrate the story
@@ -28,3 +35,9 @@ function delayNarration(func, delay) {
 
 // Decorate the narrate function with delayNarration
 let delayedNarrate = delayNarration(narrate, 2000);
+
+////////////////////////////////////////////////////////////////////
+//////////////////////implememntation////////////////////////////
+///////////////////////////////////////////////////////////////////
+
+rollDice();
