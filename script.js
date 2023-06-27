@@ -116,14 +116,14 @@ function sortProperties(sortFunction) {
     console.log(property);
   });
 }
-addProperty(property);
-addProperty(property2);
-addProperty(property3);
-sortProperties(sortedPropertyLocation);
-
-// sortProperties(sortedPropertyLocation);
 
 // Function to calculate the number of days a property has been listed
 function daysListed(property) {
-  // TODO: Implement this function
+  const currentDate = new Date();
+  const propertyListedDate = property.listedDate;
+
+  const listedDays = Math.trunc(
+    (currentDate - propertyListedDate) / (1000 * 60 * 60 * 24)
+  );
+  return listedDays;
 }
