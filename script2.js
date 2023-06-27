@@ -25,13 +25,8 @@ snoozeAlarm.addEventListener("click", () => {
   wantedObj.ring();
 });
 
-///////////////////////////////
-////alarm ring with matching time/////
-////////////////////////////////
-
 const timeRightNow = new Date();
 
-// let time = 10
 let setAlarmTime = "";
 // Define an alarm object
 let alarm = {
@@ -41,15 +36,6 @@ let alarm = {
   days: [],
   snoozeDuration: 0,
   ring: function () {
-    /////////////////////////////////
-    // FIRST IMPLEMENTATION
-    /////////////////////////////////////
-    // if (this.time == alarmhappeningTime) {
-    //   console.log("alaerm goes off");
-    // } else {
-    //   console.log("didnt match");
-    // }
-
     const countDown = setInterval(() => {
       let minutes = String(Math.trunc(this.time / 60)).padStart(2, 0);
       let seconds = String(Math.trunc(this.time % 60)).padStart(2, 0);
@@ -71,8 +57,8 @@ let alarm = {
 };
 alarm.ring();
 
-// Function to add new alarms
-function setAlarm(tym, day, snoze) {
+// Function to set new alarms
+function setAlarm(tym) {
   const newAlarm = { ...alarm };
 
   newAlarm.alarmID = `alarm${alarms.length + 1}`;
@@ -87,10 +73,6 @@ function setAlarm(tym, day, snoze) {
   const timeDifferenceInseconds = Math.abs(+timeRightNow - +time1) / 1000;
   newAlarm.time = timeDifferenceInseconds;
   console.log(timeDifferenceInseconds);
-
-  // newAlarm.message = messag;
-  newAlarm.days = [day];
-  newAlarm.snoozeDuration = snoze;
 
   alarms.push(newAlarm);
   newAlarm.ring();
@@ -110,14 +92,16 @@ function findAlarm(ID) {
 
 // Function to create an iterable for the alarms array
 function createIterable() {
-  // TODO: Implement this function
+  alarms.forEach((alarm) => {
+    return alarm;
+  });
 }
 
 ////////////////////////////////////////////////////////////////////////////
 /////////////////////Implementation///////////////////////////////////
 
 // adding alarm
-// setAlarm("13:20", 1, 1);
+// setAlarm("16:53", 1, 1);
 // setAlarm("15:29", "number2", 2, 2);
 // console.log("alrms array");
 // console.log(alarms);
@@ -127,6 +111,3 @@ function createIterable() {
 
 /////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
-//snoozing
-// rememberSnoozed("alarm1");
