@@ -5,15 +5,28 @@ let properties = [];
 
 // Define a property object
 let property = {
+  propertyID: "k001",
+  location: "",
+  size: 0,
+  price: 0,
+  status: "",
+  ownerContactInfo: {
+    name: "lamour",
+    phoneNumber: "3434343",
+    email: "22",
+  },
+  listedDate: new Date(),
+};
+let property2 = {
   propertyID: "",
   location: "",
   size: 0,
   price: 0,
   status: "",
   ownerContactInfo: {
-    name: "",
-    phoneNumber: "",
-    email: "",
+    name: "dhdh",
+    phoneNumber: "2435363",
+    email: "22",
   },
   listedDate: new Date(),
 };
@@ -37,21 +50,17 @@ function addProperty(property) {
 // Function to update a property
 function updateProperty(propertyID, newDetails) {
   let property = properties.find((property) => {
-    property.propertyID == propertyID;
+    return property.propertyID == propertyID;
   });
 
-  if (!property) {
+  if (property) {
+    property = {
+      ...property,
+      ...newDetails,
+    };
+  } else {
     throw new Error("Property doesnt exist");
   }
-
-  property = {
-    ...property,
-    ...newDetails,
-    ownerContactInfo: {
-      ...property.ownerContactInfo,
-      ...newDetails.ownerContactInfo,
-    },
-  };
 }
 
 // Function to sort properties
