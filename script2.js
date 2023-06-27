@@ -80,14 +80,14 @@ function setAlarm(tym) {
 
 // Function to find an alarm by its ID
 function findAlarm(ID) {
-  const wantedObj = alarms.find((obj) => {
+  const alarm = alarms.find((obj) => {
     if (obj.alarmID === ID) {
       return obj;
     } else return;
   });
   console.log("wanted alarm");
-  console.log(wantedObj);
-  return wantedObj;
+  console.log(alarm);
+  return alarm;
 }
 
 // Function to create an iterable for the alarms array
@@ -101,7 +101,7 @@ function createIterable() {
 /////////////////////Implementation///////////////////////////////////
 
 // adding alarm
-// setAlarm("16:53", 1, 1);
+setAlarm("20:30", 1, 1);
 // setAlarm("15:29", "number2", 2, 2);
 // console.log("alrms array");
 // console.log(alarms);
