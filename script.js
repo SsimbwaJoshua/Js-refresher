@@ -6,10 +6,10 @@ let properties = [];
 // Define a property object
 let property = {
   propertyID: "k001",
-  location: "",
+  location: "kampala",
   size: 0,
   price: 0,
-  status: "",
+  status: "sold",
   ownerContactInfo: {
     name: "lamour",
     phoneNumber: "3434343",
@@ -19,10 +19,23 @@ let property = {
 };
 let property2 = {
   propertyID: "",
-  location: "",
+  location: "zttt",
   size: 0,
   price: 0,
-  status: "",
+  status: "second one",
+  ownerContactInfo: {
+    name: "dhdh",
+    phoneNumber: "2435363",
+    email: "22",
+  },
+  listedDate: new Date(),
+};
+let property3 = {
+  propertyID: "",
+  location: "arttt",
+  size: 0,
+  price: 0,
+  status: "third one",
   ownerContactInfo: {
     name: "dhdh",
     phoneNumber: "2435363",
@@ -63,10 +76,52 @@ function updateProperty(propertyID, newDetails) {
   }
 }
 
+//sort by location
+const sortedPropertyLocation = function () {
+  properties.sort((p1, p2) => {
+    let prop1 = p1.location.toLowerCase();
+    let prop2 = p2.location.toLowerCase();
+
+    if (prop1 > prop2) {
+      return 1;
+    }
+    if (prop1 < prop2) {
+      return -1;
+    }
+    return;
+  });
+};
+//sort by status
+const sortedPropertyStatus = function () {
+  properties.sort((p1, p2) => {
+    let prop1 = p1.status.toLowerCase();
+    let prop2 = p2.status.toLowerCase();
+
+    if (prop1 > prop2) {
+      return 1;
+    }
+    if (prop1 < prop2) {
+      return -1;
+    }
+    return;
+  });
+};
+
 // Function to sort properties
+
 function sortProperties(sortFunction) {
-  // TODO: Implement this function
+  sortFunction();
+
+  properties.forEach((property) => {
+    console.log(property);
+  });
 }
+addProperty(property);
+addProperty(property2);
+addProperty(property3);
+sortProperties(sortedPropertyLocation);
+
+// sortProperties(sortedPropertyLocation);
 
 // Function to calculate the number of days a property has been listed
 function daysListed(property) {
