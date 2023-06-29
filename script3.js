@@ -1,16 +1,18 @@
 "use strict";
 
+//display related
+
 const displayPlayerScore = document.querySelector(".player-score");
 const play = document.querySelector(".play-btn");
 displayPlayerScore.textContent = "0";
+
+//////////////////////////////////////////////////////////////////////////////////
 
 // Define a player object
 let player = {
   playerName: "",
   playerScore: 0,
 };
-
-//console.log(player1.winnerstring.call(player));
 
 // Function to roll two dice
 function rollDice() {
@@ -24,9 +26,6 @@ function rollDice() {
     dice2Result: dice2,
   };
   return diceResults;
-
-  // outcome = dice1 + dice2;
-  // console.log(outcome);
 }
 
 /////////////////////////////////////////
@@ -47,7 +46,7 @@ function playRound() {
   const rollDiceResults = rollDice();
   const outcome = rollDiceResults.dice1Result + rollDiceResults.dice2Result;
 
-  narrate();
+  narrate(outcome);
 
   if (outcome == 7 || outcome == 11) {
     player.playerScore = player.playerScore + 1;

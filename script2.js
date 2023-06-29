@@ -26,6 +26,8 @@ snoozeAlarm.addEventListener("click", () => {
 });
 
 const timeRightNow = new Date();
+//////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 
 let setAlarmTime = "";
 // Define an alarm object
@@ -39,6 +41,8 @@ let alarm = {
     const countDown = setInterval(() => {
       let minutes = String(Math.trunc(this.time / 60)).padStart(2, 0);
       let seconds = String(Math.trunc(this.time % 60)).padStart(2, 0);
+
+      //displaying remaining time to the user
       timeplace.textContent = `${minutes}:${seconds}`;
       this.time = this.time - 1;
 
@@ -66,14 +70,15 @@ function setAlarm(tym) {
 
   const [hours, minutes] = tym.split(":");
 
-  const time1 = new Date();
-  time1.setHours(hours);
-  time1.setMinutes(minutes);
+  const timeSetByUser = new Date();
+  timeSetByUser.setHours(hours);
+  timeSetByUser.setMinutes(minutes);
 
-  const timeDifferenceInseconds = Math.abs(+timeRightNow - +time1) / 1000;
+  const timeDifferenceInseconds =
+    Math.abs(+timeRightNow - +timeSetByUser) / 1000;
   newAlarm.time = timeDifferenceInseconds;
-  console.log(timeDifferenceInseconds);
 
+  // adding the alarm to the alarms array
   alarms.push(newAlarm);
   newAlarm.ring();
 }
@@ -83,10 +88,11 @@ function findAlarm(ID) {
   const alarm = alarms.find((obj) => {
     if (obj.alarmID === ID) {
       return obj;
-    } else return;
+    } else {
+      throw new Error("Alarm doesnt exist");
+    }
   });
-  console.log("wanted alarm");
-  console.log(alarm);
+
   return alarm;
 }
 
@@ -100,14 +106,5 @@ function createIterable() {
 ////////////////////////////////////////////////////////////////////////////
 /////////////////////Implementation///////////////////////////////////
 
-// adding alarm
-// setAlarm("20:30", 1, 1);
-// setAlarm("15:29", "number2", 2, 2);
-// console.log("alrms array");
-// console.log(alarms);
-
-//finding alarm
-// findAlarm("alarm1");
-
-/////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
+// adding alarm (put a string of the time yu want the alram to ring in 24hr format)
+// setAlarm("12:58");
