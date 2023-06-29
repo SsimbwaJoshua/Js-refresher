@@ -34,9 +34,12 @@ function rollDice() {
 /////////////////////////////////////////////////////////////////////////////
 
 // Function to narrate the story
-function narrate() {
-  const rollDiceResults = rollDice();
-  const outcome = rollDiceResults.dice1Result + rollDiceResults.dice2Result;
+function narrate(outcome) {
+  if (outcome == 7 || outcome == 11) {
+    console.log("You win. your free to take a shot");
+  } else if (outcome === 2 || outcome == 3 || outcome == 12) {
+    console.log("you lose. make 10 push ups");
+  } else return;
 }
 
 // Function to play a round of the game
