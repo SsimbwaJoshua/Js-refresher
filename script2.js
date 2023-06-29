@@ -101,7 +101,7 @@ function createIterable() {
 /////////////////////Implementation///////////////////////////////////
 
 // adding alarm
-setAlarm("20:30", 1, 1);
+// setAlarm("20:30", 1, 1);
 // setAlarm("15:29", "number2", 2, 2);
 // console.log("alrms array");
 // console.log(alarms);

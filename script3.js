@@ -47,31 +47,28 @@ function playRound() {
   const rollDiceResults = rollDice();
   const outcome = rollDiceResults.dice1Result + rollDiceResults.dice2Result;
 
+  narrate();
+
   if (outcome == 7 || outcome == 11) {
     player.playerScore = player.playerScore + 1;
     displayPlayerScore.textContent = player.playerScore;
-    console.log("1 point was gained. next part of the game is");
   } else if (outcome === 2 || outcome == 3 || outcome == 12) {
     player.playerScore--;
     displayPlayerScore.textContent = player.playerScore;
-    console.log("1 point was lost. next part of the game is");
   } else return;
-
-  console.log("outcome");
-  console.log(outcome);
-  console.log("total points");
-  console.log(player.playerScore);
 }
 
 // Decorator function to add a delay to the narrate function
 function delayNarration(func, delay) {
-  setTimeout(func, delay);
-
-  // TODO: Implement this function
+  return function () {
+    setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
 }
 
 // Decorate the narrate function with delayNarration
-// let delayedNarrate = delayNarration(narrate, 2000);
+let delayedNarrate = delayNarration(narrate, 2000);
 
 ////////////////////////////////////////////////////////////////////
 //////////////////////implememntation////////////////////////////
